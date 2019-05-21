@@ -103,7 +103,7 @@
 			}
     		
     		//아래는 
-    		if(document.idChkForm.idChk.value != 0)
+    		if(document.idChkForm.idChk.value == 0)
 	   		{
     			idComment.innerHTML = "이미 존재하는 아이디 입니다.";
     			inputForm.id.focus();

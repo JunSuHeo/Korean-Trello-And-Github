@@ -37,29 +37,29 @@ public class LoginController extends HttpServlet {
 	    CommandForward forward = null;
 	    Command command = null;
 	    
-	    // 메인화면
+	    // 硫붿씤�솕硫�
 	    if(com.equals("/main.do")) {
 	    	forward = new CommandForward();
 	    	forward.setRedirect(false);
 	    	forward.setNextPath("loginForm.jsp");
 	    }
-	    // 회원가입 화면
+	    // �쉶�썝媛��엯 �솕硫�
 	    else if(com.equals("/join.do")) {
 	    	forward = new CommandForward();
 	    	forward.setRedirect(false);
 	    	forward.setNextPath("joinForm.jsp");
 	    }
-	    // 로그인 처리
+	    // 濡쒓렇�씤 泥섎━
 	    else if(com.equals("/loginCommand.do")) {
 	    	command = new LoginCommand();
 	    	forward = command.execute(request, response);
 	    }
-	    // 회원가입 처리
+	    // �쉶�썝媛��엯 泥섎━
 	    else if(com.equals("/joinCommand.do")) {
 	    	command = new JoinCommand();
 	    	forward = command.execute(request, response);
 	    }
-	    // 아이디 중복 확인 처리
+	    // �븘�씠�뵒 以묐났 �솗�씤 泥섎━
 	    else if(com.equals("/idChkCommand.do")) {
 	    	command = new IdCheckCommand();
 	    	forward = command.execute(request, response);

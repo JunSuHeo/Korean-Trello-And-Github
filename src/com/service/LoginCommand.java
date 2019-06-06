@@ -21,22 +21,24 @@ public class LoginCommand implements Command {
 		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 		
-		// DB에서 사용자 정보를 불러와 이 정보가 있는지 확인.
+		// DB�뿉�꽌 �궗�슜�옄 �젙蹂대�� 遺덈윭�� �씠 �젙蹂닿� �엳�뒗吏� �솗�씤.
 		int checkVal = UserDAO.getInstance().loginCheck(id, password);
 		
-		if(checkVal == 1) { // 로그인 성공
+		if(checkVal == 1) { // 濡쒓렇�씤 �꽦怨�
 			
-			// 세션에 다이디를 저장
+			// �꽭�뀡�뿉 �떎�씠�뵒瑜� ���옣
 			HttpSession session = request.getSession();
 			
+			forward.setRedirect(true);
 			session.setAttribute("sessionId", id);
+			forward.setNextPath("board.jsp");
 			
-			// TODO : 로그인 성공 후 메인화면으로 이동
+			// TODO : 濡쒓렇�씤 �꽦怨� �썑 硫붿씤�솕硫댁쑝濡� �씠�룞
 			
-		}else { // 로그인 실패
+		}else { // 濡쒓렇�씤 �떎�뙣
 			request.setAttribute("login failed", true);
 			
-			// 다시 로그인 페이지 띄워줌
+			// �떎�떆 濡쒓렇�씤 �럹�씠吏� �쓣�썙以�
 			forward.setRedirect(false);
 			forward.setNextPath("loginForm.jsp");
 		}
